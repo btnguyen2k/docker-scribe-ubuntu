@@ -15,9 +15,10 @@ RUN \
 
 RUN \
 	cd /tmp && \
-	wget --no-check-certificate -qO- http://sourceforge.net/projects/boost/files/boost/1.45.0/boost_1_45_0.tar.gz/download | tar -xzf - && \
-	cd boost_1_45_0 && \
-	./bootstrap.sh && \
+	export BOOST_VERSION=45 && \
+	wget --no-check-certificate -qO- http://sourceforge.net/projects/boost/files/boost/1.${BOOST_VERSION}.0/boost_1_${BOOST_VERSION}_0.tar.gz/download | tar -xzf - && \
+	cd boost_1_${BOOST_VERSION}_0 && \
+	./bootstrap.sh --with-libraries=filesystem,program_options,system && \
 	./bjam install	#for libboost v2
 #	./b2 install	#for libboost v3
 
