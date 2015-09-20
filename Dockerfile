@@ -15,19 +15,20 @@ RUN \
 
 RUN \
 	cd /tmp && \
-	export BOOST_VERSION=45 && \
-	wget --no-check-certificate -qO- http://sourceforge.net/projects/boost/files/boost/1.${BOOST_VERSION}.0/boost_1_${BOOST_VERSION}_0.tar.gz/download | tar -xzf - && \
-	cd boost_1_${BOOST_VERSION}_0 && \
-	./bootstrap.sh --with-libraries=filesystem,program_options,system && \
-	./bjam install	#for libboost v2
+	export BOOST_VERSION=47 && \
+	wget --no-check-certificate -qO- http://sourceforge.net/projects/boost/files/boost/1.${BOOST_VERSION}.0/boost_1_${BOOST_VERSION}_0.tar.gz/download | tar -xzf -
+
+#	cd boost_1_${BOOST_VERSION}_0 && \
+#	./bootstrap.sh --with-libraries=filesystem,program_options,system && \
+#	./bjam install	#for libboost v2
 #	./b2 install	#for libboost v3
 
-COPY install-thrift-scribe.bash /tmp/
+#COPY install-thrift-scribe.bash /tmp/
 
-RUN cd /tmp && bash install-thrift-scribe.bash
+#RUN cd /tmp && bash install-thrift-scribe.bash
 
-RUN \
-	apt-get clean && \
-	apt-get autoclean && \
-	apt-get autoremove
+#RUN \
+#	apt-get clean && \
+#	apt-get autoclean && \
+#	apt-get autoremove
 
